@@ -1,30 +1,92 @@
 <!--BackOffice Aggiungere, modificare e cancellare i prodotti-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">
     <title>Back Office</title>
 
     <!--Favicon block-->
-     <link rel="icon" type="image/x-icon" href="./images/favicon/favicon.ico" sizes="48x48">    
-     <link rel="icon" type="image/png" href="./images/favicon/eStore-192x192.png" sizes="192x192">
-     <link rel="apple-touch-icon" href="./images/favicon/eStore-apple-touch-icon.png" sizes="180x180">
-     <!--Favicon block /--> 
+    <link rel="icon" type="image/x-icon" href="./images/favicon/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" href="./images/favicon/eStore-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="./images/favicon/eStore-apple-touch-icon.png" sizes="180x180">
+    <!--Favicon block /-->
 
 </head>
+
 <body>
     <!-- header -->
     <header class="d-flex justify-content-between align-items-center">
-    <h1 class="">Back Office</h1>
-    <button class="btn btn-success mb-2" onclick="goToIndex()">Torna ai prodotti</button>
+        <h1 class="">Back Office</h1>
+        <button class="btn btn-success mb-2" onclick="goToIndex()">Torna ai prodotti</button>
     </header>
-    <!-- header -->
-    
+    <!-- header /-->
+    <div class="container">
+
+        <!--Spinner-->
+        <div class="spinner-container">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <!--Spinner /-->
+
+
+        <!--Form-->
+        <form id="product-form" class="" novalidate>
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome Prodotto</label>
+                <input type="text" class="form-control" id="name" required>
+                <span class="text-danger" id="name-error"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrizione</label>
+                <!--
+                <input type="text" class="form-control" id="description" required>
+                -->
+                <textarea class="form-control" id="description" name="text" rows="12"></textarea>
+                <span class="text-danger" id="description-error"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="brand" class="form-label">Brand</label>
+                <input type="text" class="form-control" id="brand" required>
+                <span class="text-danger" id="brand-error"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="imageUrl" class="form-label">URL Immagine</label>
+                <input type="url" class="form-control" id="imageUrl" required>
+                <span class="text-danger" id="imageUrl-error"></span>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-success mb-2 " onclick="loadImage()">Preview</button>
+                <div id="image-preview"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Prezzo</label>
+                <input type="text" class="form-control" id="price" required>
+                <span class="text-danger" id="price-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salva</button>
+
+        </form>
+
+    </div>
+
+
+
     <script src="./bootstrap/js/bootstrap.bundle.js"></script>
     <script src="./back-office.js"></script>
 </body>
+
 </html>

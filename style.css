@@ -20,3 +20,8 @@
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
   }
+
+  #image-preview img {
+    width: 200px;
+    height: auto;
+  }

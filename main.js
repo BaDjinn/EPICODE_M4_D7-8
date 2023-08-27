@@ -49,9 +49,11 @@ function displayProducts(products) {
                 <div class="col-12 mb-3">${entry.name}</div>
                 <div class="col-12 mb-3">${entry.brand}</div>
                 <div class="col-12">Prezzo: ${entry.price}</div>
+                <button class="btn btn-outline-warning mb-2" onclick="goToBackOffice(${entry.id})">Modifica</button>
               </td>
             </tr>
-        `
+        `;
+        tableBody.innerHTML += row;
     })
 
 }
