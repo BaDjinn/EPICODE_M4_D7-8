@@ -15,38 +15,36 @@ function goToIndex() {
 async function deleteProduct() {
   const qsParams = new URLSearchParams(window.location.search);
   const productId = qsParams.get("id");
-  if (confirm('Sei sicuro di voler eliminare questo utente?')) {
+  if (confirm("Sei sicuro di voler eliminare questo prodotto?")) {
     try {
       await await fetch(`${API_URL}${productId}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4ZGRiZWU4NTlmNTAwMTQ1ZjJmMmEiLCJpYXQiOjE2OTI5ODI3MTksImV4cCI6MTY5NDE5MjMxOX0.ypGq-c1p6NEImZQnf7d1w3i9gRgGAiG6LQQKfH-JFdc"
-        }
-        });
-      const product = await response.json();
-      window.location.href = 'index.html?status=cancel-ok';
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4ZGRiZWU4NTlmNTAwMTQ1ZjJmMmEiLCJpYXQiOjE2OTI5ODI3MTksImV4cCI6MTY5NDE5MjMxOX0.ypGq-c1p6NEImZQnf7d1w3i9gRgGAiG6LQQKfH-JFdc",
+        },
+      });
+      window.location.href = "index.html?status=cancel-ok";
     } catch (error) {
-      console.log('Errore nel\'eleminazione dell\'utente: ', error);
+      console.log("Errore nel'eleminazione dell'utente: ", error);
     }
   }
-  
 }
-
-
 
 async function loadImage() {
-
-  try{const urlPreview = document.getElementById("imageUrl").value;
-  if (urlPreview) {     
-    document.querySelector("#image-preview").innerHTML = "";
-    document.querySelector(
-      "#image-preview"
-    ).innerHTML = `<img src=${urlPreview} alt="Product Image" class="img-fluid">`;
-  } else {
-    document.querySelector("#image-preview").innerHTML = "";
-  }} catch(error) {
+  try {
+    const urlPreview = document.getElementById("imageUrl").value;
+    if (urlPreview) {
+      document.querySelector("#image-preview").innerHTML = "";
+      document.querySelector(
+        "#image-preview"
+      ).innerHTML = `<img src=${urlPreview} alt="Product Image" class="img-fluid">`;
+    } else {
+      document.querySelector("#image-preview").innerHTML = "";
+    }
+  } catch (error) {
     alert("Si è verificato un errore durante il caricamento dell'immagine.");
-}
+  }
 }
 
 function convalidaForm() {
@@ -80,8 +78,8 @@ function convalidaForm() {
   else errors.price = "";
 
   return {
-    isAllValid: Object.values(errors).every((value) => value === ""),
-    errors,
+    isAllValid: Object.values(errors).every((value) => value === ''),
+    errors
   };
 }
 
@@ -90,9 +88,10 @@ function displayValidation() {
   let isValid = true;
 
   if (!valid.isAllValid) {
+
     for (const field in valid.errors) {
       const errorElement = document.getElementById(`${field}-error`);
-      errorElement.textContent = "";
+      errorElement.textContent = '';
       errorElement.textContent = valid.errors[field];
     }
 
@@ -113,7 +112,7 @@ form.addEventListener("submit", async (evnt) => {
     description: descriptionInput.value,
     brand: brandInput.value,
     imageUrl: imageUrlInput.value,
-    price: priceInput.value
+    price: priceInput.value,
   };
   //console.log(product)
   try {
@@ -122,26 +121,25 @@ form.addEventListener("submit", async (evnt) => {
       : `${API_URL}`;
 
     const HTTP_METHOD = productIdInput.value ? "PUT" : "POST";
-    console.log(HTTP_METHOD);
+    //console.log(HTTP_METHOD);
     const response = await fetch(URL, {
       method: HTTP_METHOD,
       body: JSON.stringify(product),
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        'Authorization':
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4ZGRiZWU4NTlmNTAwMTQ1ZjJmMmEiLCJpYXQiOjE2OTI5ODI3MTksImV4cCI6MTY5NDE5MjMxOX0.ypGq-c1p6NEImZQnf7d1w3i9gRgGAiG6LQQKfH-JFdc",
       },
     });
 
     if (response.ok) {
-      window.location.href = userIdInput.value
+      window.location.href = productIdInput.value
         ? "index.html?status=edit-ok"
         : "index.html?status=create-ok";
     } else {
       alert("Si è verificato un errore durante la creazione del prodotto.");
     }
-    
-  } catch (error) {}
+  } catch (error) {alert(`Si è verificato un errore durante il salvataggio.${error}`)}
 });
 
 function buildTitle(productId) {
@@ -162,9 +160,10 @@ async function getProductData() {
     try {
       const response = await fetch(`${API_URL}${productId}`, {
         headers: {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4ZGRiZWU4NTlmNTAwMTQ1ZjJmMmEiLCJpYXQiOjE2OTI5ODI3MTksImV4cCI6MTY5NDE5MjMxOX0.ypGq-c1p6NEImZQnf7d1w3i9gRgGAiG6LQQKfH-JFdc"
-        }
-        });
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4ZGRiZWU4NTlmNTAwMTQ1ZjJmMmEiLCJpYXQiOjE2OTI5ODI3MTksImV4cCI6MTY5NDE5MjMxOX0.ypGq-c1p6NEImZQnf7d1w3i9gRgGAiG6LQQKfH-JFdc",
+        },
+      });
       const product = await response.json();
 
       setTimeout(() => {
@@ -174,7 +173,7 @@ async function getProductData() {
       }, 500);
 
       if (!("name" in product)) {
-        console.log("Il prodotto non esiste");//nel caso qualcuno modificasse la query manualmente dalla barra
+        console.log("Il prodotto non esiste"); //nel caso qualcuno modificasse la query manualmente dalla barra
         return;
       }
 
@@ -184,7 +183,6 @@ async function getProductData() {
       brandInput.value = product.brand;
       imageUrlInput.value = product.imageUrl;
       priceInput.value = product.price;
-      
     } catch (error) {
       console.log("Errore nel recupero dei dati prodotto: ", error);
     }
@@ -192,8 +190,8 @@ async function getProductData() {
     // CREAZIONE PRODOTTO
     document.querySelector(".spinner-container").classList.add("d-none");
     document.querySelector("#product-form").classList.remove("d-none");
-    console.log('Nuovo prodotto!');
+    console.log("Nuovo prodotto!");
   }
 }
 
-getProductData()
+getProductData();

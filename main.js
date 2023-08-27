@@ -55,7 +55,7 @@ function displayProducts(products) {
               <td class="col">
                 <div class="col-12 mb-3">${entry.name}</div>
                 <div class="col-12 mb-3">${entry.brand}</div>
-                <div class="col-12 mb-3">Prezzo: ${entry.price}</div>
+                <div class="col-12 mb-3">Prezzo: ${entry.price}$</div>
                 <button class="btn btn-outline-warning mb-3" onclick="goToBackOffice('${entry._id}')">Modifica</button>
 
               </td>

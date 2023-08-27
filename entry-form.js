@@ -15,7 +15,7 @@ function displayProduct(product) {
         <div class=" col-3 product-details">
             <div class="mb-3">Name: ${product.name}</div>
             <div class="mb-3">Brand: ${product.brand}</div>
-            <div class="mb-3">Price: ${product.price}</div>
+            <div class="mb-3">Price: ${product.price}$</div>
         </div>
     </div>
     <div class="mb-3">
