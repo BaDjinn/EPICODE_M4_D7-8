@@ -17,11 +17,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
   }
 
   #image-preview img {
     width: 200px;
     height: auto;
+  }
+
+  .image-container img{
+    max-height: 9em;
+    width:auto;
   }

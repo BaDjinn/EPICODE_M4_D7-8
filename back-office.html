@@ -22,6 +22,7 @@
     <!-- header -->
     <header class="d-flex justify-content-between align-items-center">
         <h1 class="">Back Office</h1>
+        <h2 id="page-title"></h2>
         <button class="btn btn-success mb-2" onclick="goToIndex()">Torna ai prodotti</button>
     </header>
     <!-- header /-->
@@ -37,8 +38,10 @@
 
 
         <!--Form-->
-        <form id="product-form" class="" novalidate>
+        <form id="product-form" class="d-none" novalidate>
 
+            <input type="hidden" id="user-id">
+        
             <div class="mb-3">
                 <label for="name" class="form-label">Nome Prodotto</label>
                 <input type="text" class="form-control" id="name" required>
@@ -68,7 +71,9 @@
 
             <div>
                 <button type="button" class="btn btn-success mb-2 " onclick="loadImage()">Preview</button>
-                <div id="image-preview"></div>
+                <div id="image-preview">
+                    
+                </div>
             </div>
 
             <div class="mb-3">
@@ -78,7 +83,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
-
+            <button type="button" class="btn btn-danger mb-2 d-none" id="deleteButton" onclick="deleteProduct()">Cancella</button>
         </form>
 
     </div>
