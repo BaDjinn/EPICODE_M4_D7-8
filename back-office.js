@@ -71,7 +71,7 @@ function convalidaForm() {
   if (!imageUrl)
     errors.imageUrl = "Il campo indirizzo immagine è obbligatorio.";
   else if (!/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/.test(imageUrl))
-    errors.email = "Inserisci un indirizzo immagine valido";
+    errors.imageUrl = "Inserisci un indirizzo immagine valido tra: jpg, png e gif";
   else errors.imageUrl = "";
 
   if (!price) errors.price = "Il campo prezzo è obbligatorio.";
